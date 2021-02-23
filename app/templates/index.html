@@ -1,10 +1,62 @@
-{% extends 'base.html' %}
+{% extends 'base.html'%}
+{% import 'macros.html' as macro %}
 
+{% block content%}
+<div class="container-fluid text-center">
+    <div class="row mt">
+        <div class="col-md-12">
+            <h1 class="main-header">News Highlights</h1>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="mb">General News</h2>
+            {{macro.sourceCategories(general)}}
+        </div>
+    </div>
+    <hr>
+    <div class="row" id="business">
+        <div class="col-md-12">
+            <h2 class="mb">Business News</h2>
+            {{macro.sourceCategories(business)}}
+        </div>
+    </div>
+    <hr>
+    <div class="row" id="tech">
+        <div class="col-md-12">
+            <h2 class="mb">Technology News</h2>
+            {{macro.sourceCategories(tech)}}
+        </div>
+    </div>
+    <hr>
+    <div class="row" id="entertainment">
+        <div class="col-md-12">
+            <h2 class="mb">Entertainment News</h2>
+            {{macro.sourceCategories(entertainment)}}
+        </div>
+    </div>
+    <hr>
+    <div class="row" id="sports">
+        <div class="col-md-12">
+            <h2 class="mb">Sports News</h2>
+        </div>
+        {{macro.sourceCategories(sports)}}
+    </div>
+    <hr>
+    <div class="row" id="science">
+        <div class="col-md-12">
+            <h2 class="mb">Science News</h2>
+        </div>
+        {{macro.sourceCategories(science)}}
+    </div>
+    <hr>
+    <div class="row" id="health">
+        <div class="col-md-12">
+            <h2 class="mb">Health News</h2>
+        </div>
+        {{macro.sourceCategories(health)}}
+    </div>
+</div>
 
-{% block head %}
-
-{% endblock %}
-
-{% block body %}
-
-{%endblock %}
+{% endblock%}
