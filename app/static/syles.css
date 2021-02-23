@@ -1,0 +1,51 @@
+html {
+    scroll-behavior: smooth;
+  }
+  
+.card {
+    box-shadow: 2px 4px 12px 2px #DCDCDC;
+    /* margin: 0.25rem; */
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    border-radius: 8px;
+    height: 200px;
+}
+
+.source-name {
+    border-right: solid black 2px;
+}
+
+.mt {
+    padding-top: 5%;
+}
+
+.mb {
+    padding-bottom: 2%;
+}
+
+.margin {
+    margin-top: 4%;
+    height: 350px;
+}
+
+.navbar-nav {
+    float: right !important;
+    margin: 0;
+}
+
+.size {
+    height: 150px !important;
+}
+
+.navbar {
+    clear: both;
+}
+
+.main-header {
+    font-family: 'Yeseva One', cursive;
+    font-weight: bold;
+}
+
+h2 {
+    font-family: 'Cuprum', sans-serif;
+}
