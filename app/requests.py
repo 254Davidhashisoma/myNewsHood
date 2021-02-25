@@ -1,5 +1,5 @@
-import urllib.request, json
-from .models import Sources, Articles
+import requests,json
+from .models import Sources,Articles
 from datetime import datetime
 
 apiKey = None
@@ -23,14 +23,14 @@ def get_sources(category):
     '''
     get_sources_url = 'https://newsapi.org/v2/sources?language=en&category={}&apiKey={}'.format(category, apiKey)
 
-    with urllib.request.urlopen(get_sources_url) as url:
-        get_sources_data = url.read()
-        get_sources_response = json.loads(get_sources_data)
+    get_sources_response = requests.get(get_sources_url).json() 
+    
+    sources_results = None
+    print(get_sources_response)
 
-        sources_results = None
-
-        if get_sources_response['sources']:
-            sources_results = process_results(get_sources_response['sources'])
+    if get_sources_response['sources']:
+        get_sources_list = get_sources_response['sources']
+        sources_results = process_results(get_sources_list)
 
     return sources_results
 
@@ -62,14 +62,14 @@ def get_articles(source_id, article):
     '''
     get_article_location_url = articles_url.format(source_id, article, apiKey)
 
-    with urllib.request.urlopen(get_article_location_url) as url:
-        articles_location_data = url.read()
-        articles_location_response = json.loads(articles_location_data)
+ 
+    articles_location_response = requests.get(get_article_location_url).json()
 
-        articles_location_results = None
+    articles_location_results = None
 
-        if articles_location_response['articles']:
-            articles_location_results = process_articles(articles_location_response['articles'])
+    if articles_location_response['articles']:
+        articles_location_list = articles_location_response['articles']
+        articles_location_results = process_articles(articles_location_list)
 
     return articles_location_results
 
@@ -103,13 +103,13 @@ def topheadlines(category):
     '''
     get_topheadlines_url = topheadlines_url.format(apiKey)
 
-    with urllib.request.urlopen(get_topheadlines_url) as url:
-        topheadlines_data = url.read()
-        topheadlines_response = json.loads(topheadlines_data)
+    
+    topheadlines_response = requests.get(get_topheadlines_url).json()
 
-        topheadlines_results = None
+    topheadlines_results = None
         
-        if topheadlines_response['articles']:
-            topheadlines_results = process_articles(topheadlines_response['articles'])
+    if topheadlines_response['articles']:
+        topheadlines_list = topheadlines_response['articles']
+        topheadlines_results = process_articles(topheadlines_list)
 
     return topheadlines_results
