@@ -1,19 +1,25 @@
-from app import create_app
-from flask_script import Manager,Server
+from flask import Flask
+from flask_bootstrap import Bootstrap
+from config import config_options
+
+bootstrap = Bootstrap()
+
+def create_app(config_name):
+    app = Flask(__name__)
+
+    # Creating app configurations
+    app.config.from_object(config_options[config_name])
+
+    # Initializing Flask Extensions
+    bootstrap.init_app(app)
+
+    # Registering the Blueprint
+    from .main import main as main_blueprint
+    app.register_blueprint(main_blueprint)
+
+    # # Setting the config
+    from .requests import configure_request
+    configure_request(app)
 
 
-# Creating app instance
-app = create_app('development')
-
-manager = Manager(app)
-manager.add_command('server',Server)
-
-@manager.command
-def test():
-    """Run the unit tests."""
-    import unittest 
-    tests = unittest.TestLoader().discover('tests')
-    unittest.TextTestRunner(verbosity=2).run(tests)
-    
-if __name__ == '__main__':
-    manager.run()
+    return app
