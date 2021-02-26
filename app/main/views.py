@@ -1,7 +1,7 @@
 from flask import render_template, redirect, url_for, request
 from . import main
 from ..models import Sources
-from ..requests import get_articles, get_sources, topheadlines
+from ..requests import get_articles, get_sources, topheadlines, get_news_sources
 
 @main.route('/')
 def index():
@@ -17,8 +17,8 @@ def index():
     technology_category = get_sources('technology')
     science_category = get_sources('science')
     health_category = get_sources('health')
-
-    return render_template('index.html', title = title, general = general_category, business = business_category, entertainment = entertainment_category, sports = sports_category,tech = technology_category, science = science_category, health = health_category)
+    news = get_news_sources()
+    return render_template('index.html', title = title, news = news, general = general_category, business = business_category, entertainment = entertainment_category, sports = sports_category,tech = technology_category, science = science_category, health = health_category)
 
 
 @main.route('/articles/<source_id>&<int:per_page>')

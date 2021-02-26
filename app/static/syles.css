@@ -3,7 +3,7 @@ html {
   }
   
 .card {
-    box-shadow: 2px 4px 12px 2px #DCDCDC;
+    box-shadow: 2px 4px 12px 2px #d0d2d8;
     /* margin: 0.25rem; */
     padding-top: 1rem;
     padding-bottom: 1rem;
@@ -46,6 +46,7 @@ html {
     font-weight: bold;
 }
 
-h2 {
+h5 ,p{
     font-family: 'Cuprum', sans-serif;
+    font-size: medium;
 }

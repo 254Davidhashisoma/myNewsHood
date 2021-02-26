@@ -11,53 +11,127 @@
     <div class="row">
         <div class="col-md-12">
             <h2 class="mb">General News</h2>
-            {% for general in general %}
-            {{ general.name }}
+            {% for news in news %}
+            <p style="font-size: 15px; float: left; text-align: center;">{{ news.name }}</p>
             {% endfor %}
         </div>
     </div>
-    {% endblock%}
-    <!-- <hr>
-    <div class="row" id="business">
-        <div class="col-md-12">
-            <h2 class="mb">Business News</h2>
-            {{macro.sourceCategories(business)}}
-        </div>
-    </div>
-    <hr>
-    <div class="row" id="tech">
-        <div class="col-md-12">
-            <h2 class="mb">Technology News</h2>
-            {{macro.sourceCategories(tech)}}
-        </div>
-    </div>
-    <hr>
-    <div class="row" id="entertainment">
-        <div class="col-md-12">
-            <h2 class="mb">Entertainment News</h2>
-            {{macro.sourceCategories(entertainment)}}
-        </div>
-    </div>
-    <hr>
-    <div class="row" id="sports">
-        <div class="col-md-12">
-            <h2 class="mb">Sports News</h2>
-        </div>
-        {{macro.sourceCategories(sports)}}
-    </div>
-    <hr>
-    <div class="row" id="science">
-        <div class="col-md-12">
-            <h2 class="mb">Science News</h2>
-        </div>
-        {{macro.sourceCategories(science)}}
-    </div>
-    <hr>
-    <div class="row" id="health">
-        <div class="col-md-12">
-            <h2 class="mb">Health News</h2>
-        </div>
-        {{macro.sourceCategories(health)}}
-    </div>
-</div> -->
 
+    <hr>
+    <h2 class="mb">Business News</h2>
+    {% for business in business %}
+        <div class="col-md-4">         
+                    <div class="card" style="width: 36rem;">
+                        <img src="{{business.urlToImage}}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">{{business.title|truncate(60)}}</h5>
+                            <p class="card-text">{{business.description|truncate(100)}}</p>
+                            <p style="font-size: 15px; float: left; text-align: center;"></p>>{{ business.publishedAt }}</p>
+                            <a href="{{business.url}}" class="btn btn-primary">Read full Article</a>
+                        </div>
+                    </div>
+                    
+                <hr>
+        </div>
+    {% endfor %}
+  
+    <h2 class="mb">Technology News</h2>
+    {% for tech in technology %}
+        <div class="col-md-4">         
+                    <div class="card" style="width: 36rem;">
+                        <img src="{{technology.urlToImage}}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">{{technology.title|truncate(60)}}</h5>
+                            <p class="card-text">{{technology.description|truncate(100)}}</p>
+                            <p>{{ technology.publishedAt }}</p>
+                            <a href="{{technology.url}}" class="btn btn-primary">Read full Article</a>
+                        </div>
+                    </div>
+                    
+                <hr>
+        </div>
+    {% endfor %}
+   
+    <h2 class="mb">Entertainment News</h2>
+    {% for entertainment in entertainment %}
+        <div class="col-md-4">         
+                    <div class="card" style="width: 36rem;">
+                        <img src="{{entertainment.urlToImage}}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">{{entertainment.title|truncate(60)}}</h5>
+                            <p class="card-text">{{entertainment.description|truncate(100)}}</p>
+                            <p>{{ entertainment.publishedAt }}</p>
+                            <a href="{{entertainment.url}}" class="btn btn-primary">Read full Article</a>
+                        </div>
+                    </div>
+                    
+                <hr>
+        </div>
+    {% endfor %}
+   
+            <h2 class="mb">Sports News</h2>
+            <div class="card" style="width: 36rem;">
+                <img src="sports.urlToImage" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">{{entertainment.title|truncate(60)}}</h5>
+                  <p class="card-text">{{ entertainment.description|truncate(100)}}</p>
+                  <a href="{{sports.url}}" class="btn btn-primary">Read full article</a>
+                </div>
+              </div>
+        </div>
+    </div>
+    <hr>
+   
+    <h2 class="mb">Science News</h2>
+    {% for Science  in Science %}
+        <div class="col-md-4">         
+                    <div class="card" style="width: 36rem;">
+                        <img src="{{science.urlToImage}}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">{{science.title|truncate(60)}}</h5>
+                            <p class="card-text">{{science.description|truncate(100)}}</p>
+                            <p>{{ business.publishedAt }}</p>
+                            <a href="{{science.url}}" class="btn btn-primary">Read full Article</a>
+                        </div>
+                    </div>
+                    
+                <hr>
+        </div>
+    {% endfor %}
+  
+    <h2 class="mb">Technology News</h2>
+    {% for tech in technology %}
+        <div class="col-md-4">         
+                    <div class="card" style="width: 36rem;">
+                        <img src="{{technology.urlToImage}}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">{{technology.title|truncate(60)}}</h5>
+                            <p class="card-text">{{technology.description|truncate(100)}}</p>
+                            <p>{{ technology.publishedAt }}</p>
+                            <a href="{{technology.url}}" class="btn btn-primary">Read full Article</a>
+                        </div>
+                    </div>
+                    
+                <hr>
+        </div>
+    {% endfor %}
+   
+
+<h2 class="mb">Health News</h2>
+{% for Health in healthy %}
+    <div class="col-md-4">         
+                <div class="card" style="width: 36rem;">
+                    <img src="{{healthy.urlToImage}}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{healthy.title|truncate(60)}}</h5>
+                        <p class="card-text">{{healthy.description|truncate(100)}}</p>
+                        <p>{{ healthy.publishedAt }}</p>
+                        <a href="{{healthy.url}}" class="btn btn-primary">Read full Article</a>
+                    </div>
+                </div>
+                
+            <hr>
+    </div>
+{% endfor %}
+
+{% endblock %}

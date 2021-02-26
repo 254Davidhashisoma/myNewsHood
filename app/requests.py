@@ -21,15 +21,14 @@ def get_sources(category):
     '''
     Function that gets the json repsonse to out url request
     '''
-    get_sources_url = 'https://newsapi.org/v2/sources?language=en&category={}&apiKey={}'.format(category, apiKey)
+    get_sources_url = 'https://newsapi.org/v2/top-headlines?country=us&category={}&sortBy=publishedAt&apiKey={}'.format(category,apiKey)
 
     get_sources_response = requests.get(get_sources_url).json() 
     
     sources_results = None
-    print(get_sources_response)
-
-    if get_sources_response['sources']:
-        get_sources_list = get_sources_response['sources']
+    
+    if get_sources_response['articles']:
+        get_sources_list = get_sources_response['articles']
         sources_results = process_results(get_sources_list)
 
     return sources_results
@@ -42,15 +41,15 @@ def process_results(sources_list):
     sources_results = []
 
     for source in sources_list:
-        id = source.get('id')
-        name = source.get('name')
+        author = source.get('author')
+        title = source.get('title')
+        urlToImage = source.get('urlToImage')
         description = source.get('description')
         url = source.get('url')
-        category = source.get('category')
-        country = source.get('country')
+        publishedAt = source.get('publishedAt')
 
-        if url:
-            source_object = Sources(id, name, description, url, category, country)
+        if urlToImage:
+            source_object = Articles(author, title, description, url, urlToImage, publishedAt)
             sources_results.append(source_object)
 
     return sources_results
@@ -113,3 +112,34 @@ def topheadlines(category):
         topheadlines_results = process_articles(topheadlines_list)
 
     return topheadlines_results
+
+def get_news_sources():
+    '''
+    '''
+    get_news_sources_url = 'http://newsapi.org/v2/sources?apiKey={}'.format(apiKey)
+
+    get_news_sources_response = requests.get(get_news_sources_url).json()
+
+    get_news_sources_results = None
+
+    if get_news_sources_response['sources']:
+        news_sources_list = get_news_sources_response['sources']
+        get_news_sources_results = process_sources(news_sources_list)
+
+    return get_news_sources_results
+
+def process_sources(news_list):
+    '''
+    '''
+    get_news_sources_results = []
+    for news in news_list:
+        id = news.get('id')
+        name = news.get('name')
+
+        if id:
+            news_object = Sources(id, name)
+            get_news_sources_results.append(news_object)
+
+    return get_news_sources_results
+
+
