@@ -39,6 +39,9 @@ html {
 
 .navbar {
     clear: both;
+    font-weight: 200;
+    font-size: 16px;
+    height: 32px;
 }
 
 .main-header {
