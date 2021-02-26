@@ -12,7 +12,7 @@
         <div class="col-md-12">
             <h2 class="mb">General News</h2>
             {% for news in news %}
-            <p style="font-size: 15px; float: left; text-align: center;">{{ news.name }}</p>
+            <p style="font-size: 16px; float: left; text-align: center;">{{ news.name }}</p>
             {% endfor %}
         </div>
     </div>
@@ -24,8 +24,8 @@
                     <div class="card" style="width: 36rem;">
                         <img src="{{business.urlToImage}}" class="card-img-top" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title">{{business.title|truncate(60)}}</h5>
-                            <p class="card-text">{{business.description|truncate(100)}}</p>
+                            <h5 class="text-bold">{{business.title|truncate(60)}}</h5>
+                            <p style="font-size: 16px; float: left; text-align: center;"></p>class="card-text">{{business.description|truncate(100)}}</p>
                             <p style="font-size: 15px; float: left; text-align: center;"></p>>{{ business.publishedAt }}</p>
                             <a href="{{business.url}}" class="btn btn-primary">Read full Article</a>
                         </div>
@@ -40,9 +40,9 @@
         <div class="col-md-4">         
                     <div class="card" style="width: 36rem;">
                         <img src="{{technology.urlToImage}}" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">{{technology.title|truncate(60)}}</h5>
-                            <p class="card-text">{{technology.description|truncate(100)}}</p>
+                        <div class="card-bo">
+                            <h5 class="text-bold">{{technology.title|truncate(60)}}</h5>
+                            <p class="small">{{technology.description|truncate(100)}}</p>
                             <p>{{ technology.publishedAt }}</p>
                             <a href="{{technology.url}}" class="btn btn-primary">Read full Article</a>
                         </div>
