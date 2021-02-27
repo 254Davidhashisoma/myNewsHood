@@ -1,1 +1,2 @@
 NEWS_API_KEY="cadfa77717e24d62925b8eb05041914c"
+SECRER_KEY='hashisoma'
